@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col s12">
+        <table>
+            <thead>
+                <tr>
+                    <th>Libelle</th>
+                    <th>Quantite</th>
+                    <th>Montant</th>
+                    <th>Total</th>
+                    <th>Date Frais</th>
+                    <th>Etat</th>
+                    {% if action_button_frais_forfait %}
+                        <th>Action</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for ligne in fiche_frais.lignes_frais_forfait %}
+                    <tr>
+                        <td>{{ ligne.frais_forfait.libelle_forfait }}</td>
+                        <td>{{ ligne.quantite }}</td>
+                        <td>{{ ligne.frais_forfait.montant }}€</td>
+                        <td>{{ ligne.total }}€</td>
+                        <td>{{ ligne.date_frais|date:"d/m/y" }}</td>
+                        <td><span class="left new badge {{ ligne.etat.color }}" data-badge-caption="{{ ligne.etat.libelle }}"></span></td>
+                        {% if action_button_frais_forfait %}
+                        <td>{% include 'fichefrais/'|add:action_button_frais_forfait %}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Sous-total :</td>
+                    <td>{{ fiche_frais.sous_total_frais_forfait }}€</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

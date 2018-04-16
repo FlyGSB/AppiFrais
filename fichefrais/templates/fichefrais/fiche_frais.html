@@ -1,0 +1,41 @@
+<ul class="collapsible" data-collapsible="expandable">
+    <li>
+        <div class="collapsible-header {{ active }}">Frais forfaitisé<span class="badge">{{ fiche_frais.lignes_frais_forfait|length }}</span></div>
+        <div class="collapsible-body">
+            {% if fiche_frais.lignes_frais_forfait %}
+            {% include 'fichefrais/ligne_frais_forfait.html' %}
+            {% else %}
+                <div class="collection">
+                    <p class="collection-item">Pas de Frais Forfait</p>
+                </div>
+            {% endif %}
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header {{ active }}">Frais non forfaitisé<span class="badge">{{ fiche_frais.lignes_frais_hors_forfait|length }}</span></div>
+        <div class="collapsible-body">
+            {% if fiche_frais.lignes_frais_hors_forfait %}
+            {% include 'fichefrais/ligne_frais_hors_forfait.html' %}
+            {% else %}
+                <div class="collection">
+                    <p class="collection-item">Pas de Frais Hors Forfait</p>
+                </div>
+            {% endif %}
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header {{ active }}">Justificatif<span class="badge">{{ fiche_frais.justificatif|length }}</span></div>
+        <div class="collapsible-body">
+            {% if fiche_frais.justificatif %}
+            {% include 'fichefrais/justificatif.html' %}
+            {% else %}
+                <div class="collection">
+                    <p class="collection-item">Pas de Justificatif</p>
+                </div>
+            {% endif %}
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header">Total: {{ fiche_frais.total }}€<span class="new badge {{ fiche_frais.etat.color }}" data-badge-caption="{{ fiche_frais.etat.libelle }}"></span></div>
+    </li>
+</ul>

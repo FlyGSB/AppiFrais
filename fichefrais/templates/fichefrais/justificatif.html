@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col s12">
+        <table class="highlight">
+            <tbody>
+                {% for piece in fiche_frais.justificatif %}
+                    <tr>
+                        <td><a href="#" class="collection-item" onClick="MyWindow=window.open('{{ piece.piece.url }}','MyWindow',width=600,height=300); return false;">{{ piece.libelle }}</a></td>
+                        {% if action_button_justificatif %}
+                        <td>{% include 'fichefrais/'|add:action_button_justificatif %}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

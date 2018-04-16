@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="row">
+      <div class="col s12">
+          <table>
+              <thead>
+                  <tr>
+                      <th>Identifiant</th>
+                      <th>Nom</th>
+                      <th>Prenom</th>
+                      <th>Profile</th>
+                      <th>Action</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  {% for ligne in qs_user %}
+                      <tr>
+                          <td>{{ ligne.username }}</td>
+                          <td>{{ ligne.first_name }}</td>
+                          <td>{{ ligne.last_name }}</td>
+                          <td>{{ ligne.profile.job}}</td>
+                          <td>{% include 'fichefrais/administrateur/action_user.html' %}</td>
+                      </tr>
+                  {% endfor %}
+              </tbody>
+          </table>
+      </div>
+  </div>
+
+{% endblock %}

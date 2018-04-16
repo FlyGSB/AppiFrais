@@ -1,0 +1,23 @@
+{% load static %}
+<script type="text/javascript" src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+{#<!-- Bootstrap tooltips -->#}
+{#<script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>#}
+{#<!-- Bootstrap core JavaScript -->#}
+{#<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>#}
+{#<!-- MDB core JavaScript -->#}
+{#<script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>#}
+<!-- Materialize -->
+<script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+
+<script>
+$(document).ready(function(){
+    $('select').material_select();
+    $('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrainWidth: false,    // Does not change width of dropdown to that of the activator
+      belowOrigin: true         // Displays dropdown below the button
+    });
+    $(".button-collapse").sideNav();
+})
+</script>

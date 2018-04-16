@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col s12">
+            {% if left > 0 %}
+            <div class="card-panel blue darken-4">
+                <span class="white-text">
+                    Bienvenue,<br>
+                    Il vous reste {{ left }} jours pour saisir les Frais du mois de {{ date_fiche_frais|date:"F" }}
+                </span>
+            </div>
+            {% elif left == 0 %}
+            <div class="card-panel orange darken-2">
+                <span class="white-text">
+                    Phrase de Bienvenue.<br>
+                    Il vous reste aujourd'hui pour saisir vos Frais.
+                </span>
+            </div>
+            {% else %}
+            <div class="card-panel red darken-2">
+                <span class="white-text">
+                    Phrase de Bienvenue.<br>
+                    La campagne de saisie de frais est finie. Vous pouvez continuer de consulter l'état de vos frais.
+                </span>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="col s12">
+            {% if left >= 0 %}
+                {% include 'fichefrais/fiche_frais.html' with active="active"%}
+            {% else %}
+                <a href="{% url 'list_fiche_frais' %}" class="waves-effect waves-light btn-large blue">Voir liste des fiches de frais</a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

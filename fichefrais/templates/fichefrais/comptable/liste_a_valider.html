@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% for nom_fiche, fiche_frais in fiches_frais.items %}
+        {{ nom_fiche }}
+        {% include 'fichefrais/fiche_frais.html' with fiche_frais=fiche_frais active="" %}
+    {% endfor %}
+
+{% endblock %}

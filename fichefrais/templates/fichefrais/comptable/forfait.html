@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col s12">
+        <table>
+            <thead>
+                <tr>
+                    <th>Libelle</th>
+                    <th>Montant</th>
+                    <th>Date Debut</th>
+                    <th>Date Fin</th>
+                    {% if action_button_forfait %}
+                    <th>Action</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for forfait in liste_forfait %}
+                    <tr>
+                        <td>{{ forfait.libelle_forfait }}</td>
+                        <td>{{ forfait.montant }}</td>
+                        <td>{{ forfait.date_debut }}</td>
+                        <td>{{ forfait.date_fin }}</td>
+                        {% if action_button_forfait %}
+                        <td>{% include 'fichefrais/'|add:action_button_forfait %}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

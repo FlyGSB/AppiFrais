@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col s12">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p class="h5">Ajouter Justificatif</p>
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>{{ form_justificatif.piece.label }}</span>
+                        {{ form_justificatif.piece }}
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
+                </div>
+                <input class="waves-effect waves-light btn" type="submit" value="Ajouter"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include 'snippets/nav.html' with user=user %}
+{% endblock %}
+
+{% block content %}
+<div class="row mt-5 pt-5">
+    <form method="POST" action="." enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form_user.as_p }}
+        {{ form_profile.as_p }}
+        <input type="submit" class="btn btn-default" value="{{ title }}" />
+    </form>
+</div>
+{% endblock %}

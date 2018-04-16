@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block navbar %}
+    {% include 'snippets/nav.html' with user=user %}
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col s8">
+    {% if user.is_authenticated %}
+    <form action="{% url 'logout' %}">
+      <p class="h5 mb-4">Bienvenue <strong>{{ user }}</strong></p>
+      <a class="waves-effect waves-light btn"><input type="submit" value="Logout"></a>
+    </form>
+    {% else %}
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <a class="waves-effect waves-light btn"><input type="submit" value="{{ title }}"/></a>
+{#        <a href="{% url 'register' %}"> Ou enregistrer un utilisateur</a>#}
+    </form>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

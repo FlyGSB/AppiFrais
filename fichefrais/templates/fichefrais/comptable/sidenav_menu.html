@@ -1,0 +1,13 @@
+<li><a class="subheader">Gestion Frais</a></li>
+<li><a class="waves-effect" href="{% url 'selection_visiteur' %}"><i class="material-icons left">chevron_right</i>Selectionner Visiteur</a></li>
+{% if new_fiche %}
+    <li><a class="waves-effect" href="{% url 'liste_validation' %}"><i class="material-icons left">list</i>Liste à Valider<span class="badge new">{{ new_fiche }}</span></a></li>
+{% else %}
+    <li><a class="waves-effect" href="{% url 'liste_validation' %}"><i class="material-icons left">list</i>Liste à Valider</a></li>
+{% endif %}
+<li><a class="subheader">Gestion Forfait</a></li>
+<li><a class="waves-effect" href="{% url 'ajout_forfait' %}"><i class="material-icons left">add_circle_outline</i>Creation Forfait</a></li>
+<li><a class="waves-effect" href="{% url 'gestion_forfait' %}"><i class="material-icons left">add_circle_outline</i>Gérer Forfait</a></li>
+<li><a class="subheader">Archives</a></li>
+<li><a class="waves-effect" href="{% url 'liste_fiche' %}"><i class="material-icons left">list</i>Liste Fiche Frais</a></li>
+<li><a class="waves-effect" href="{% url 'liste_ancien_forfait' %}"><i class="material-icons left">list</i>Anciens Forfait</a></li>

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if fiche_frais %}
+        {{ fiche_frais.date|date:"F Y" }}
+        {% include 'fichefrais/fiche_frais.html' with active="active" %}
+    {% else %}
+        <p>Pas de fiche de frais pour cette utilisateur et cette date.</p>
+    {% endif %}
+
+{% endblock %}

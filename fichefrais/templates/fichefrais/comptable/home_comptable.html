@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <div class="row">
+        <div class="col s12">
+            {% if left > 0 %}
+            <div class="card-panel blue darken-4">
+                <span class="white-text">
+                    Phrase de Bienvenue,<br>
+                    Il vous reste {{ left }} jours pour valider des Frais.
+                </span>
+            </div>
+            {% elif left == 0 %}
+            <div class="card-panel orange darken-2">
+                <span class="white-text">
+                    Phrase de Bienvenue.<br>
+                    Il vous reste aujourd'hui pour valider des Frais.
+                </span>
+            </div>
+            {% else %}
+            <div class="card-panel red darken-2">
+                <span class="white-text">
+                    Phrase de Bienvenue.<br>
+                    La campagne de validation de frais est finie.<br>
+                    Vous pouvez continuer de consulter la liste des frais.
+                </span>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <p class="h1">Campagne Validation: </p>
+
+    <div class="row">
+        <div class="col s4">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title center">
+                        Valider des Frais<br>
+                    </span>
+                </div>
+                <div class="card-action center">
+                    <a class="btn waves-effect waves-light {{ etat_boutton }}" href="{% url 'selection_visiteur' %}">Selection Visteur</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col s4">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title center">
+                        Gérer les Frais Forfaitisé<br>
+                    </span>
+                </div>
+                <div class="card-action center">
+                    <a class="btn waves-effect" href="{% url 'ajout_forfait' %}">Créer</a>
+                    <a class="btn waves-effect" href="{% url 'gestion_forfait' %}">Gérer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="h1">Archives: </p>
+    <div class="row">
+        <div class="col s4">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title center">
+                        Liste de tout<br>les Frais<br>
+                    </span>
+                </div>
+                <div class="card-action center">
+                    <a class="btn waves-effect" href="{% url 'liste_fiche' %}">Liste</a>
+                </div>
+            </div>
+        </div>
+        <div class="col s4">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title center">
+                        Liste anciens<br>Frais Forfaitisé<br>
+                    </span>
+                </div>
+                <div class="card-action center">
+                    <a class="btn waves-effect" href="{% url 'liste_ancien_forfait' %}">Liste</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

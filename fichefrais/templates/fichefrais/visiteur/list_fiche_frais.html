@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{#    {% for nom_fiche, fiche_frais in fiches_frais.items %}#}
+{#        {{ nom_fiche.date|date:"F Y" }}#}
+{#        {% include 'fichefrais/fiche_frais.html' with fiche_frais=fiche_frais active="" %}#}
+{#    {% endfor %}#}
+
+    <ul class="collection">
+    {% for nom_fiche, fiche_frais in fiches_frais.items %}
+        <li class="collection-item"><div>{{ nom_fiche.date|date:"F Y" }}<a href="{% url "fichefrais" nom_fiche.date.year nom_fiche.date.month %}" class="secondary-content"><i class="material-icons blue-text">visibility</i></a></div></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

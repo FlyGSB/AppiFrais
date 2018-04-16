@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col s12">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h5>Choisir Visiteur</h5>
+                {{ choix_visiteur.as_p }}
+            </form>
+        </div>
+    </div>
+
+    <div class="row">
+        <ul class="collection">
+            {% for nom_fiche, fiche_frais in fiches_frais.items %}
+                <li class="collection-item"><div>{{ nom_fiche.date|date:"F Y" }}<a href="{% url "user_fichefrais" nom_fiche.user.id nom_fiche.date.year nom_fiche.date.month %}" class="secondary-content"><i class="material-icons blue-text">visibility</i></a></div></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

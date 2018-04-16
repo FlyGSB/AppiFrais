@@ -1,0 +1,11 @@
+<div class="jumbotron">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h5>Choisir Visiteur</h5>
+        {{ choix_visiteur.as_p }}
+    </form>
+</div>
+
+{% if fiche_frais %}
+    {% include 'fichefrais/fiche_frais.html' with active="active" %}
+{% endif %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mt-5 pt-5">
+    <ul id="tabs-swipe-demo" class="tabs tabs-fixed-width">
+        <li class="tab col s3 blue-text darken-3"><a class="active" href="#forfait">Forfait</a></li>
+        <li class="tab col s3 blue-text darken-3"><a href="#hors-forfait">Hors Forfait</a></li>
+    </ul>
+
+    <div id="forfait" class="col s12">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form_ff.as_p }}
+            <a class="waves-effect waves-light btn"><input type="submit" value="Ajouter" /></a>
+        </form>
+    </div>
+
+    <div id="hors-forfait" class="col s12">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form_hf.as_p }}
+            <a class="waves-effect waves-light btn"><input type="submit" value="Ajouter" /></a>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+$('.datepicker').pickadate({
+    selectMonths: true,
+    selectYears: 2,
+    labelMonthNext: 'Mois suivant',
+    labelMonthPrev: 'Mois précédent',
+    labelMonthSelect: 'Selectionner le mois',
+    labelYearSelect: 'Selectionner une année',
+    monthsFull: [ 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
+    monthsShort: [ 'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc' ],
+    weekdaysFull: [ 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi' ],
+    weekdaysShort: [ 'Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam' ],
+    weekdaysLetter: [ 'D', 'L', 'M', 'M', 'J', 'V', 'S' ],
+    today: 'Aujourd\'hui',
+    clear: 'Réinitialiser',
+    close: 'Fermer',
+    format: 'dd/mm/yyyy',
+    closeOnSelect: true,
+    firstDay:1
+});
+</script>
+{% endblock %}

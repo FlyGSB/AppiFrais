@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="row">
+        <h5>Visiteur</h5>
+        <div class="collection">
+            {% for user in visiteur %}
+                <div class="collection-item">
+                    {{ user.username }}
+                    {% include 'fichefrais/'|add:action_button_user %}
+                </div>
+            {% endfor %}
+        </div>
+        <h5>Comptable</h5>
+        <div class="collection">
+            {% for user in comptable %}
+                <div class="collection-item">
+                    {{ user.username }}
+                    {% include 'fichefrais/'|add:action_button_user %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

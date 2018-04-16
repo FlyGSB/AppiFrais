@@ -1,0 +1,11 @@
+<nav class="top-nav z-depth-0" style="border-bottom: solid 1px #cfcfcf">
+    <div class="nav-wrapper white">
+        <a class="brand-logo black-text center">{{ title }}</a>
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons black-text">menu</i></a>
+        {% if back %}
+        <ul class="left">
+            <li><a href="{% url back %}"> <i class="material-icons left black-text">arrow_back</i></a></li>
+        </ul>
+        {% endif %}
+    </div>
+</nav>

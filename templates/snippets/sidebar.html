@@ -1,0 +1,34 @@
+{% load static %}
+
+{% if user.is_authenticated %}
+    <style>
+        header, main, footer {
+            padding-left: 300px;
+        }
+        @media only screen and (max-width : 992px) {
+            header, main, footer {
+                padding-left: 0;
+            }
+        }
+    </style>
+
+    <ul id="slide-out" class="side-nav fixed">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    {% with "img/"|add:user.profile.job.libelle_job|add:".jpg" as job %}
+                        <img src="{% static job %}">
+                    {% endwith %}
+                </div>
+                <span class="black-text">{{ user.profile.job.libelle_job }}</span>
+                <div class="divider"></div>
+                <span class="black-text name">{{ user.username }}</span>
+                <span class="black-text date-icon">{% now "l d F Y" %}</span>
+            </div>
+        </li>
+        <li><a class="waves-effect" href="{% url user.profile.job.home_job  %}">Accueil</a></li>
+        {% include "fichefrais/"|add:user.profile.job.libelle_job|add:"/sidenav_menu.html" %}
+        <li><div class="divider"></div></li>
+        <li><a class="waves-effect" href="{% url 'logout' %}"><i class="material-icons left">input</i>Déconnexion</a></li>
+    </ul>
+{% endif %}

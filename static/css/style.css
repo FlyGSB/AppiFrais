@@ -1,0 +1,20 @@
+/* YOUR CUSTOM STYLES */
+
+.tabs .indicator{
+    background-color: #1565c0;
+}
+.tabs .tab a {
+    color: #7d9ac0;
+}
+
+.tabs .tab a:hover {
+    color: #3a96c0;
+}
+
+.tabs .tab a.active {
+    color: #1565c0;
+}
+
+.container {
+    margin-top: 50px;
+}

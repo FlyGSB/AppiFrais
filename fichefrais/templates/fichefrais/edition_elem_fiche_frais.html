@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div id="forfait" class="col s12">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p class="h5">Modifier {{ element }}</p>
+            {{ edit_form.as_p }}
+            <input type="submit" value="Editer" class="waves-effect waves-light btn"/>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+<script>
+$('.datepicker').pickadate({
+    selectMonths: true,
+    selectYears: 2,
+    labelMonthNext: 'Mois suivant',
+    labelMonthPrev: 'Mois précédent',
+    labelMonthSelect: 'Selectionner le mois',
+    labelYearSelect: 'Selectionner une année',
+    monthsFull: [ 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre' ],
+    monthsShort: [ 'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc' ],
+    weekdaysFull: [ 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi' ],
+    weekdaysShort: [ 'Dim', 'Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam' ],
+    weekdaysLetter: [ 'D', 'L', 'M', 'M', 'J', 'V', 'S' ],
+    today: 'Aujourd\'hui',
+    clear: 'Réinitialiser',
+    close: 'Fermer',
+    format: 'dd/mm/yyyy',
+    closeOnSelect: true,
+    firstDay:1
+});
+</script>
+{% endblock %}
