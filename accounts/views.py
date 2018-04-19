@@ -5,7 +5,7 @@ from .forms import UserLoginForm, UserRegisterForm, ProfileRegisterForm
 
 # Create your views here.
 def login_view(request):
-    title = "Connection"
+    title = "Connexion"
     form = UserLoginForm(request.POST or None)
     if form.is_valid():
         username = form.cleaned_data.get("username")

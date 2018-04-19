@@ -18,3 +18,14 @@
 .container {
     margin-top: 50px;
 }
+
+.switch label input[type=checkbox][disabled]+.campagne:after {
+    background-color: #00b0ff;
+}
+.switch label input[type=checkbox][disabled]:checked+.campagne:after {
+    background-color: #ff2543;
+}
+
+.switch .lever{
+    border: 1px solid #9b989f;
+}

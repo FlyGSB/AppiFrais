@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col s12">
-        <table>
+        <table class="bordered highlight">
             <thead>
                 <tr>
                     <th>Libelle</th>
@@ -18,7 +18,7 @@
                         <td>{{ ligne.libelle_hors_forfait }}</td>
                         <td>{{ ligne.montant }}</td>
                         <td>{{ ligne.date_frais|date:"d/m/y" }}</td>
-                        <td><span class="left new badge {{ ligne.etat.color }}" data-badge-caption="{{ ligne.etat.libelle }}"></span></td>
+                        <td><span class="left new badge {{ ligne.etat.color }}" data-badge-caption="{{ ligne.etat.libelle }}"> </span></td>
                         {% if action_button_frais_forfait %}
                         <td>{% include 'fichefrais/'|add:action_button_frais_hors_forfait %}</td>
                         {% endif %}

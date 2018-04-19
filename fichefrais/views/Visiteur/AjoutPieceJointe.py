@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from fichefrais.forms import FormPieceJointe
 from fichefrais.models import FicheFrais, PiecesJointe
-from fichefrais.utils import verify_connexion_decorator, get_date_fiche_frais
+from fichefrais.utils import decorateur_verification_connexion, get_date_fiche_frais
 
 
-@verify_connexion_decorator(utilisateur_autorise=["Visiteur"])
+@decorateur_verification_connexion(utilisateur_autorise=["Visiteur"])
 def ajout_piece_jointe(request):
 
     title = "Ajout Justificatif"

@@ -1,16 +1,15 @@
 from django.shortcuts import render, redirect
 from fichefrais.models import FicheFrais, Etat
 from fichefrais.forms import FormLigneFraisForfait, FormLigneFraisHorsForfait
-from fichefrais.utils import verify_connexion_decorator, get_date_fiche_frais
+from fichefrais.utils import decorateur_verification_connexion, get_date_fiche_frais
 
 
-@verify_connexion_decorator(utilisateur_autorise=["Visiteur"])
+@decorateur_verification_connexion(utilisateur_autorise=["Visiteur"])
 def creation_frais(request):
 
     title = "Ajouter Frais"
 
     if request.method == "POST":
-        print(request)
         date_fiche_frais = get_date_fiche_frais()
         form_ff = FormLigneFraisForfait(request.POST)
         form_hf = FormLigneFraisHorsForfait(request.POST)

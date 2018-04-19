@@ -57,7 +57,7 @@ def get_default_context(request=None, title=""):
     return context
 
 
-def verify_connexion(request, utilisateur_autorise):
+def verification_connexion(request, utilisateur_autorise):
     if request:
         if not request.user.is_authenticated():
             return redirect("login")
@@ -69,7 +69,7 @@ def verify_connexion(request, utilisateur_autorise):
         return redirect("login")
 
 
-def verify_connexion_decorator(utilisateur_autorise=None):
+def decorateur_verification_connexion(utilisateur_autorise=None):
     if not utilisateur_autorise:
         utilisateur_autorise = []
 
@@ -88,7 +88,7 @@ def verify_connexion_decorator(utilisateur_autorise=None):
     return decorateur
 
 
-def add_months(sourcedate, months):
+def ajout_mois(sourcedate, months):
     month = sourcedate.month - 1 + months
     year = sourcedate.year + month // 12
     month = month % 12 + 1
@@ -100,7 +100,7 @@ def get_date_fiche_frais():
     today = datetime.date.today()
 
     if today.day >= 10:
-        date_fiche_frais = add_months(today, 1)
+        date_fiche_frais = ajout_mois(today, 1)
     else:
         date_fiche_frais = datetime.date.today()
 
@@ -111,7 +111,7 @@ def get_date_fin_fiche_frais():
     today = datetime.date.today()
 
     if today.day >= 10:
-        date_fin_fiche_frais = add_months(datetime.date(today.year, today.month, 10), 1)
+        date_fin_fiche_frais = ajout_mois(datetime.date(today.year, today.month, 10), 1)
     else:
         date_fin_fiche_frais = datetime.date(today.year, today.month, 10)
     

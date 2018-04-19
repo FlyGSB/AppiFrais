@@ -2,10 +2,10 @@ from django.shortcuts import render
 from datetime import datetime
 from fichefrais.models import FicheFrais
 from fichefrais.utils import liste_fiche_frais
-from fichefrais.utils import verify_connexion_decorator
+from fichefrais.utils import decorateur_verification_connexion
 
 
-@verify_connexion_decorator(utilisateur_autorise=["Comptable"])
+@decorateur_verification_connexion(utilisateur_autorise=["Comptable"])
 def liste_a_valider(request):
 
     today = datetime.today()

@@ -6,7 +6,7 @@
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         {% include 'snippets/css.html' %}
         {% block css %}{% endblock %}
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title %}{{ title }}{% endblock %}</title>
     </head>
 
     <body>

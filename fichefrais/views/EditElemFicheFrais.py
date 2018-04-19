@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponseForbidden
 from fichefrais.models import LigneFraisForfait, LigneFraisHorsForfait, Forfait
 from fichefrais.forms import FormLigneFraisForfait, FormLigneFraisHorsForfait, FormFraisForfait
-from fichefrais.utils import get_elem_fiche, verify_connexion, get_date_fiche_frais
+from fichefrais.utils import get_elem_fiche, verification_connexion, get_date_fiche_frais
 
 
 def edit_elem_fiche_frais(request, type_elem=None, obj_id=None):
@@ -11,7 +11,7 @@ def edit_elem_fiche_frais(request, type_elem=None, obj_id=None):
     date_fiche_frais = get_date_fiche_frais()
 
     if isinstance(elem, LigneFraisForfait):
-        connexion = verify_connexion(request, ["Visiteur"])
+        connexion = verification_connexion(request, ["Visiteur"])
         if connexion:
             return connexion
         if elem.fiche_frais.user != request.user:
@@ -22,7 +22,7 @@ def edit_elem_fiche_frais(request, type_elem=None, obj_id=None):
         edit_form = FormLigneFraisForfait(request.POST or None, instance=elem)
 
     elif isinstance(elem, LigneFraisHorsForfait):
-        connexion = verify_connexion(request, ["Visiteur"])
+        connexion = verification_connexion(request, ["Visiteur"])
         if connexion:
             return connexion
         if elem.fiche_frais.user != request.user:
@@ -33,7 +33,7 @@ def edit_elem_fiche_frais(request, type_elem=None, obj_id=None):
         edit_form = FormLigneFraisHorsForfait(request.POST or None, instance=elem)
 
     elif isinstance(elem, Forfait):
-        connexion = verify_connexion(request, ["Comptable"])
+        connexion = verification_connexion(request, ["Comptable"])
         if connexion:
             return connexion
         nom_obj = "Forfait"

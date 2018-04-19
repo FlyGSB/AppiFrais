@@ -3,10 +3,10 @@ from fichefrais.models import FicheFrais
 from django.contrib.auth.models import User
 from fichefrais.forms import FormChoixVisiteur
 from django.shortcuts import render, get_object_or_404
-from fichefrais.utils import liste_fiche_frais, verify_connexion_decorator
+from fichefrais.utils import liste_fiche_frais, decorateur_verification_connexion
 
 
-@verify_connexion_decorator(utilisateur_autorise=["Comptable"])
+@decorateur_verification_connexion(utilisateur_autorise=["Comptable"])
 def selection_visiteur(request):
 
     title = "Selection Visiteur"

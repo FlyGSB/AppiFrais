@@ -1,7 +1,7 @@
 <li><a class="subheader">Gestion Frais</a></li>
 <li><a class="waves-effect" href="{% url 'selection_visiteur' %}"><i class="material-icons left">chevron_right</i>Selectionner Visiteur</a></li>
-{% if new_fiche %}
-    <li><a class="waves-effect" href="{% url 'liste_validation' %}"><i class="material-icons left">list</i>Liste à Valider<span class="badge new">{{ new_fiche }}</span></a></li>
+{% if nb_fiche_frais %}
+    <li><a class="waves-effect" href="{% url 'liste_validation' %}"><i class="material-icons left">list</i>Liste à Valider<span class="badge">{{ nb_fiche_frais }}</span></a></li>
 {% else %}
     <li><a class="waves-effect" href="{% url 'liste_validation' %}"><i class="material-icons left">list</i>Liste à Valider</a></li>
 {% endif %}

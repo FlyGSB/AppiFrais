@@ -6,7 +6,7 @@ from fichefrais.models import FicheFrais
 from fichefrais.utils import liste_fiche_frais
 
 
-@login_required(login_url="/login")
+@login_required(login_url="/accounts/login")
 def fiche_frais(request, year, month):
 
     qs_fiche_frais = FicheFrais.objects.filter(user=request.user, date__year=year, date__month=month)
@@ -24,7 +24,7 @@ def fiche_frais(request, year, month):
     return render(request, "fichefrais/fiche_frais_detail.html", context)
 
 
-@login_required(login_url="/login")
+@login_required(login_url="/accounts/login")
 def user_fiche_frais(request, id_user, year, month):
 
     user = User.objects.filter(id=id_user).first()
@@ -35,8 +35,12 @@ def user_fiche_frais(request, id_user, year, month):
     else:
         return redirect("/")
 
+    mois = qs_fiche_frais[0].date.month
+    annee = qs_fiche_frais[0].date.year
+    name = user.username
+
     context = {
-        "title": "Fiche de frais (%s/%s)" % (qs_fiche_frais[0].date.month, qs_fiche_frais[0].date.year),
+        "title": "Fiche de frais (%s/%s) de %s" % (mois, annee, name),
         "fiche_frais": fiche_frais
     }
 

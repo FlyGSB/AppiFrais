@@ -2,12 +2,12 @@ import datetime
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from fichefrais.models import FicheFrais, Etat
-from fichefrais.utils import (liste_fiche_frais, verify_connexion_decorator,
+from fichefrais.utils import (liste_fiche_frais, decorateur_verification_connexion,
                               get_date_fiche_frais, get_date_fin_fiche_frais, get_temps_relatif)
 
 
-@login_required(login_url="/login")
-@verify_connexion_decorator(utilisateur_autorise=["Visiteur"])
+@login_required(login_url="/accounts/login")
+@decorateur_verification_connexion(utilisateur_autorise=["Visiteur"])
 def home_visiteur(request):
 
     title = "Accueil"
