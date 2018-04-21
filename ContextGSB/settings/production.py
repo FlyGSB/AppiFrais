@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts.apps.AccountsConfig',
     'fichefrais.apps.CreateFicheFraisConfig',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [

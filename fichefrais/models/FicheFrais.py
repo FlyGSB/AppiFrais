@@ -5,7 +5,7 @@ from .Etat import Etat
 
 class FicheFrais(models.Model):
     user = models.ForeignKey(User, models.CASCADE, 'fiche_frais')
-    etat = models.ForeignKey(Etat, models.SET("..."))
+    etat = models.ForeignKey(Etat, models.SET(0))
 
     date = models.DateField()
     date_modif = models.DateTimeField(auto_now=True, editable=True)
