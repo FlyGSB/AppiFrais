@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from datetime import datetime
-from fichefrais.utils import decorateur_verification_connexion
 from django.contrib.auth.models import User
 
 
-@decorateur_verification_connexion(utilisateur_autorise=["Administrateur"])
 def liste_user(request):
 
     today = datetime.today()

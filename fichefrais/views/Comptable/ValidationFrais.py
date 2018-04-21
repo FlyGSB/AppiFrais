@@ -1,9 +1,8 @@
 from django.shortcuts import redirect
 from fichefrais.models import Etat
-from fichefrais.utils import get_elem_fiche, decorateur_verification_connexion
+from fichefrais.utils import get_elem_fiche
 
 
-@decorateur_verification_connexion(utilisateur_autorise=["Comptable"])
 def validation_frais(request, valide=None, type_frais=None, frais_id=None):
 
     if valide:

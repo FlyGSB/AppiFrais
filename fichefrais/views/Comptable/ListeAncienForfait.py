@@ -1,10 +1,8 @@
 from django.shortcuts import render
-from fichefrais.utils import decorateur_verification_connexion
 from fichefrais.models import Forfait
 from datetime import datetime
 
 
-@decorateur_verification_connexion(utilisateur_autorise=["Comptable"])
 def liste_ancien_forfait(request):
 
     today = datetime.today()

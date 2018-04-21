@@ -12,7 +12,8 @@ class LoginRequiredMiddleware:
 
         url = request.path_info.split("/")
         if not request.user.is_authenticated():
-            return redirect("login")
+            if not url or not any(url != path for path in ["/login", "/account"]):
+                return redirect("login")
 
         access = True
 

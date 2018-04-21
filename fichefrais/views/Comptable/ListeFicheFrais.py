@@ -3,10 +3,8 @@ from django.shortcuts import render, get_object_or_404
 from fichefrais.forms import FormChoixVisiteur
 from fichefrais.models import FicheFrais
 from fichefrais.utils import liste_fiche_frais
-from fichefrais.utils import decorateur_verification_connexion
 
 
-@decorateur_verification_connexion(utilisateur_autorise=["Comptable"])
 def liste_fiche_frais_comptable(request):
 
     choix_visiteur = FormChoixVisiteur(request.POST or None)

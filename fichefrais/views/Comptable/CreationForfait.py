@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect
 from datetime import datetime
 from fichefrais.forms import FormFraisForfait
-from fichefrais.utils import decorateur_verification_connexion
 
 
-@decorateur_verification_connexion(utilisateur_autorise=["Comptable"])
 def creation_forfait(request):
 
     today = datetime.today()

@@ -5,8 +5,8 @@ from django.db import models
 
 
 class LigneFraisForfait(models.Model):
-    fiche_frais = models.ForeignKey(FicheFrais, models.CASCADE)
-    frais_forfait = models.ForeignKey(Forfait, models.CASCADE, "forfait",)
+    fiche_frais = models.ForeignKey(FicheFrais, models.CASCADE, 'frais_forfait')
+    forfait = models.ForeignKey(Forfait, models.CASCADE, 'forfait')
     etat = models.ForeignKey(Etat)
     quantite = models.IntegerField()
     date_frais = models.DateField(editable=True)
@@ -15,7 +15,7 @@ class LigneFraisForfait(models.Model):
 
     @property
     def total(self):
-        return self.frais_forfait.montant * self.quantite
+        return self.forfait.montant * self.quantite
     
     def __str__(self):
-        return "%s (%s)" % (self.frais_forfait, self.quantite)
+        return "%s (%s)" % (self.forfait, self.quantite)

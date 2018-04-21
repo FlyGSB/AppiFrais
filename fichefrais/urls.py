@@ -1,14 +1,15 @@
 from django.conf.urls import url, include
-
+from rest_framework import routers
+from rest_framework.authtoken import views as auth_views
+from fichefrais.views.Api import (AndroidUserFicheFraisViewSet, android_detail_fiche_frais_view)
 from .views import (creation_frais, home_visiteur, supprimer_frais, list_fiche_frais, ajout_piece_jointe,
                     home_comptable, validation_frais, selection_visiteur, liste_a_valider, liste_fiche_frais_comptable,
                     creation_forfait, gestion_forfait, cloture_forfait, liste_ancien_forfait,
                     home_admin, edit_elem_fiche_frais, supression_user, gestion_utilisateur, modification_user,
                     home, fiche_frais, user_fiche_frais)
 
-from fichefrais.ressources import FicheFraisResource
-
-fichefrais_ressource = FicheFraisResource()
+router = routers.DefaultRouter()
+router.register(r'user_fiche_frais', AndroidUserFicheFraisViewSet)
 
 urlpatterns = [
     url(r'^$', home, name="home"),
@@ -37,5 +38,8 @@ urlpatterns = [
     url(r'^administration/del_utilisateur/(?P<user_id>[0-9]+)/$', supression_user, name="suppression_user"),
     url(r'^administration/modif_user/(?P<user_id>[0-9]+)/$', modification_user, name="modification_user"),
     # API
-    url(r'^api/', include(fichefrais_ressource.urls))
+    url(r'^api-rest/', include(router.urls)),
+    url(r'^api-rest/detail_fiche_frais/(?P<pk>[0-9]+)/$', android_detail_fiche_frais_view),
+    url(r'^api-token-auth/', auth_views.obtain_auth_token),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

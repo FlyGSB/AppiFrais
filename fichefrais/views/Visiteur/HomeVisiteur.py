@@ -6,8 +6,6 @@ from fichefrais.utils import (liste_fiche_frais, decorateur_verification_connexi
                               get_date_fiche_frais, get_date_fin_fiche_frais, get_temps_relatif)
 
 
-@login_required(login_url="/accounts/login")
-@decorateur_verification_connexion(utilisateur_autorise=["Visiteur"])
 def home_visiteur(request):
 
     title = "Accueil"

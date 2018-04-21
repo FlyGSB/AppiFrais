@@ -12,7 +12,7 @@ class Job(models.Model):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, models.CASCADE)
     adresse = models.CharField(max_length=40, blank=True)
     ville = models.CharField(max_length=40, blank=True)
     cp = models.CharField(max_length=5, blank=True)

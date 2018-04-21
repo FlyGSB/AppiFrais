@@ -1,10 +1,8 @@
 from datetime import datetime
 from fichefrais.models import Forfait
-from fichefrais.utils import decorateur_verification_connexion
 from django.shortcuts import render
 
 
-@decorateur_verification_connexion(utilisateur_autorise=["Comptable"])
 def gestion_forfait(request):
 
     today = datetime.today()

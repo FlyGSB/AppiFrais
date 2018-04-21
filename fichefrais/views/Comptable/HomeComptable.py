@@ -1,10 +1,9 @@
 from django.shortcuts import render
 from datetime import date
 from fichefrais.models import FicheFrais
-from fichefrais.utils import decorateur_verification_connexion, get_temps_relatif, ajout_mois
+from fichefrais.utils import get_temps_relatif, ajout_mois
 
 
-@decorateur_verification_connexion(utilisateur_autorise=["Comptable", "Administrateur"])
 def home_comptable(request):
 
     title = "Accueil"

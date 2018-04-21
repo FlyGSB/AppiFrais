@@ -4,7 +4,7 @@ from .Etat import Etat
 
 
 class LigneFraisHorsForfait(models.Model):
-    fiche_frais = models.ForeignKey(FicheFrais, models.CASCADE)
+    fiche_frais = models.ForeignKey(FicheFrais, models.CASCADE, "frais_hors_forfait")
     etat = models.ForeignKey(Etat)
     montant = models.FloatField(max_length=6)
     libelle_hors_forfait = models.CharField(max_length=40)
