@@ -40,6 +40,6 @@ urlpatterns = [
     # API
     url(r'^api-rest/', include(router.urls)),
     url(r'^api-rest/detail_fiche_frais/(?P<pk>[0-9]+)/$', android_detail_fiche_frais_view),
-    url(r'^api-token-auth/',  customAuthToken.as_view()),
+    url(r'^api-token-auth/',  customAuthToken, name="customAuthToken"),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
