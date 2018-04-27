@@ -1,13 +1,18 @@
 from django.shortcuts import render
-from datetime import datetime
+from datetime import date
 from fichefrais.models import FicheFrais
-from fichefrais.utils import liste_fiche_frais
+from fichefrais.utils import liste_fiche_frais, ajout_mois
 
 
 def liste_a_valider(request):
 
-    today = datetime.today()
-    qs_fiche_frais = FicheFrais.objects.filter(date__year=today.year, date__month=today.month)
+    today = date.today()
+
+    if today.day > 20:
+        date_fiche_frais = ajout_mois(today, 1)
+        qs_fiche_frais = FicheFrais.objects.filter(date__year=today.year, date__month=date_fiche_frais.month)
+    else:
+        qs_fiche_frais = FicheFrais.objects.filter(date__year=today.year, date__month=today.month)
     fiches_frais = liste_fiche_frais(qs_fiche_frais)
 
     context = {

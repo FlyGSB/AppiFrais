@@ -7,8 +7,8 @@ def gestion_utilisateur(request):
 
     today = datetime.today()
 
-    qs_visiteur = User.objects.filter(profile__job__libelle_job__icontains="Visiteur")
-    qs_comptable = User.objects.filter(profile__job__libelle_job__icontains="Comptable")
+    qs_visiteur = User.objects.filter(profile__job__libelle_job__icontains="visiteur")
+    qs_comptable = User.objects.filter(profile__job__libelle_job__icontains="comptable")
 
     context = {
         "title": "Gestion Utilisateur",

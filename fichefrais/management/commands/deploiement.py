@@ -15,9 +15,9 @@ etats = ((1, "blue", "Crée"),
          (6, "green", "Remboursée"),
          (7, "yellow", "En Traitement"))
 
-jobs = (("Administrateur", 3, "home_admin"),
-        ("Comptable", 2, "home_comptable"),
-        ("Visiteur", 1, "home_visiteur"))
+jobs = (("administrateur", 3, "home_admin"),
+        ("comptable", 2, "home_comptable"),
+        ("visiteur", 1, "home_visiteur"))
 
 users = (('Villechalane', 'Louis', 'lvillachane', 'jux7gjux7g', '8 rue des Charmes', '46000', 'Cahors', 2005, 12, 21, 1),
         ('Andre', 'David', 'dandre', 'oppg5oppg5', '1 rue Petit', '46200', 'Lalbenque', 1998, 11, 23, 1),

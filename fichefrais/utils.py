@@ -14,14 +14,16 @@ def liste_fiche_frais(qs_fiche_frais):
         sous_total_frais_forfait = sum([ligne.total for ligne in frais_forfait])
         sous_total_frais_hors_forfait = sum([ligne.montant for ligne in frais_hors_forfait])
         etat_fiche_frais = fiche.etat
-        fiches_frais[fiche] = {"etat": etat_fiche_frais,
-                               "lignes_frais_forfait": frais_forfait,
-                               "lignes_frais_hors_forfait": frais_hors_forfait,
-                               "justificatif": justificatif,
-                               "sous_total_frais_forfait": sous_total_frais_forfait,
-                               "sous_total_frais_hors_forfait": sous_total_frais_hors_forfait,
-                               "total": round(sous_total_frais_forfait + sous_total_frais_hors_forfait, 2),
-                               }
+        fiches_frais[fiche] = {
+            "user": fiche.user,
+            "etat": etat_fiche_frais,
+            "lignes_frais_forfait": frais_forfait,
+            "lignes_frais_hors_forfait": frais_hors_forfait,
+            "justificatif": justificatif,
+            "sous_total_frais_forfait": sous_total_frais_forfait,
+            "sous_total_frais_hors_forfait": sous_total_frais_hors_forfait,
+            "total": round(sous_total_frais_forfait + sous_total_frais_hors_forfait, 2),
+        }
     return fiches_frais
 
 

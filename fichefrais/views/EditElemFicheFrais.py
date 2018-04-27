@@ -11,7 +11,7 @@ def edit_elem_fiche_frais(request, type_elem=None, obj_id=None):
     date_fiche_frais = get_date_fiche_frais()
 
     if isinstance(elem, LigneFraisForfait):
-        connexion = verification_connexion(request, ["Visiteur"])
+        connexion = verification_connexion(request, ["visiteur"])
         if connexion:
             return connexion
         if elem.fiche_frais.user != request.user:
@@ -22,7 +22,7 @@ def edit_elem_fiche_frais(request, type_elem=None, obj_id=None):
         edit_form = FormLigneFraisForfait(request.POST or None, instance=elem)
 
     elif isinstance(elem, LigneFraisHorsForfait):
-        connexion = verification_connexion(request, ["Visiteur"])
+        connexion = verification_connexion(request, ["visiteur"])
         if connexion:
             return connexion
         if elem.fiche_frais.user != request.user:
@@ -33,7 +33,7 @@ def edit_elem_fiche_frais(request, type_elem=None, obj_id=None):
         edit_form = FormLigneFraisHorsForfait(request.POST or None, instance=elem)
 
     elif isinstance(elem, Forfait):
-        connexion = verification_connexion(request, ["Comptable"])
+        connexion = verification_connexion(request, ["comptable"])
         if connexion:
             return connexion
         nom_obj = "Forfait"
