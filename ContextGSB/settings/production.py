@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = '5)qefs$%(^yr*p6ty3%l*41d(_9^h_dlkrn-$wnr3u+81s+#8m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['flygsb.ddns.net', '54.38.183.182', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -140,5 +140,3 @@ MEDIAFILES_DIRS = [
     os.path.join(BASE_DIR, "static", "media"),
     '/var/www/media/'
 ]
-
-APPEND_SLASH=False
