@@ -17,7 +17,7 @@ from fichefrais.serializers import (AndroidUserFicheFraisSerializer,
 class AndroidUserFicheFraisViewSet(viewsets.ModelViewSet):
     authentication_classes = (TokenAuthentication, BasicAuthentication, SessionAuthentication)
     permission_classes = (IsAuthenticated,)
-    queryset = User.objects.token.get(TokenAuthentication)
+    queryset = User.objects.all()
     serializer_class = AndroidUserFicheFraisSerializer
 
 
