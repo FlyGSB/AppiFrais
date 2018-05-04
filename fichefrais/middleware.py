@@ -11,10 +11,8 @@ class LoginRequiredMiddleware:
         # the view (and later middleware) are called.
 
         url = request.path_info.split("/")
-        print(url)
         if not request.user.is_authenticated():
             if not url or not any(url != path for path in ["/login", "/account"]):
-                print("redirect login")
                 return redirect("login")
 
         access = True
@@ -25,6 +23,8 @@ class LoginRequiredMiddleware:
         elif "visiteur" in url:
             if not request.user.profile.job.libelle_job in ["visiteur", "administrateur"]:
                 access = False
+            elif request.user.profile.changer_mdp is True:
+                return redirect("changer_mdp")
         elif "administrateur" in url:
             if not request.user.profile.job.libelle_job in ["administrateur"]:
                 access = False

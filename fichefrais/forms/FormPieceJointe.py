@@ -1,11 +1,11 @@
 from django import forms
-from fichefrais.models import PiecesJointe
+from fichefrais.models import PieceJointe
 
 
 class FormPieceJointe(forms.ModelForm):
 
     class Meta:
-        model = PiecesJointe
+        model = PieceJointe
         fields = ["piece"]
 
     def __init__(self, *args, **kwargs):

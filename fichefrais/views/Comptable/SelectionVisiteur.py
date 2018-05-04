@@ -35,9 +35,9 @@ def selection_visiteur(request):
 
         if today.day > 20:
             date_fiche_frais = ajout_mois(today, 1)
-            qs_fiche_frais = FicheFrais.objects.filter(date__year=today.year, date__month=date_fiche_frais.month)
+            qs_fiche_frais = FicheFrais.objects.filter(user=visiteur, date__year=today.year, date__month=date_fiche_frais.month)
         else:
-            qs_fiche_frais = FicheFrais.objects.filter(date__year=today.year, date__month=today.month)
+            qs_fiche_frais = FicheFrais.objects.filter(user=visiteur, date__year=today.year, date__month=today.month)
 
         if qs_fiche_frais:
             fiche_frais = liste_fiche_frais(qs_fiche_frais)[qs_fiche_frais.first()]

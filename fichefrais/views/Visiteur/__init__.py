@@ -2,4 +2,8 @@ from .AjoutPieceJointe import *
 from .CreationFrais import *
 from .HomeVisiteur import *
 from .ListeFicheFrais import *
-from .SupprimerFrais import *
+from .EditLigneFraisForfait import *
+from .EditLigneFraisHorsForfait import *
+from .SupprJustificatif import *
+from .SupprLigneFraisForfait import *
+from .SupprLigneFraisHorsForfait import *

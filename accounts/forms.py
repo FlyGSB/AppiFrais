@@ -31,10 +31,10 @@ class UserLoginForm(forms.Form):
 
 class UserRegisterForm(forms.ModelForm):
 
-    password = forms.CharField(widget=forms.PasswordInput,label='Mot de passe ', required=True)
-    first_name = forms.CharField(label='Prenom')
-    last_name = forms.CharField(label='Nom')
-    email = forms.EmailField(label='Adresse E-Mail', required=True)
+    password = forms.CharField(widget=forms.PasswordInput,label='Mot de passe ', required=False)
+    first_name = forms.CharField(label='Prenom', required=False)
+    last_name = forms.CharField(label='Nom', required=False)
+    email = forms.EmailField(label='Adresse E-Mail', required=False)
 
 
     class Meta():

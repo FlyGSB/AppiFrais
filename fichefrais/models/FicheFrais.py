@@ -1,11 +1,12 @@
 from django.contrib.auth.models import User
 from django.db import models
-from .Etat import Etat
+
+from fichefrais.utils import set_montant_valide
 
 
 class FicheFrais(models.Model):
     user = models.ForeignKey(User, models.CASCADE, 'fiche_frais')
-    etat = models.ForeignKey(Etat, models.SET(0))
+    etat = models.ForeignKey("Etat", models.SET(0))
 
     date = models.DateField()
     date_modif = models.DateTimeField(auto_now=True, editable=True)
@@ -15,3 +16,6 @@ class FicheFrais(models.Model):
 
     def __str__(self):
         return "%s-%s %s" % (self.date.month, self.date.year, self.user)
+
+    def set_montant_valide(self):
+        set_montant_valide(self)

@@ -16,5 +16,5 @@ class Profile(models.Model):
     adresse = models.CharField(max_length=40, blank=True)
     ville = models.CharField(max_length=40, blank=True)
     cp = models.CharField(max_length=5, blank=True)
-    # job = models.CharField(max_length=20, null=False)
     job = models.ForeignKey(Job, on_delete=models.CASCADE, blank=True)
+    changer_mdp = models.BooleanField(default=False)

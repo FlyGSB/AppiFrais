@@ -28,11 +28,19 @@ def modification_user(request, user_id=None):
         last_name = form.cleaned_data.get("last_name")
         email = form.cleaned_data.get("email")
 
-        user.username = username
-        user.last_name = last_name
-        user.first_name = first_name
-        user.email = email
-        user.set_password(password)
+        if username:
+            user.username = username
+        if last_name:
+            user.last_name = last_name
+        if first_name:
+            user.first_name = first_name
+        if email:
+            user.email = email
+        if password:
+            user.profile.changer_mdp = True
+            user.set_password(password)
+            user.profile.save()
+
         user.save()
         return redirect(request.user.profile.job.home_job)
 
