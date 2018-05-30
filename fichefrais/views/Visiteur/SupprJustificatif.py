@@ -4,7 +4,11 @@ from fichefrais.models import PieceJointe, FicheFrais
 
 
 def suppr_justificatif(request, pk):
-
+    """
+    :view suppr_justificatif: permet de supprimer un Justificatif
+    :param pk: clef primaire d'un Justificatif (PieceJointe)
+    :return: redirige vers l'accueil de l'utilisateur
+    """
     justificatif = get_object_or_404(PieceJointe, pk=pk)
 
     if justificatif:

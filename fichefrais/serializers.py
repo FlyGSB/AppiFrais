@@ -6,6 +6,10 @@ from fichefrais.models import FicheFrais, Etat, LigneFraisForfait, LigneFraisHor
 # ANDROID #
 ###########
 
+######################################
+# Representation de la Base de Donne #
+# pour l'API Android                 #
+######################################
 
 class AndroidEtatSerializer(serializers.ModelSerializer):
     class Meta:

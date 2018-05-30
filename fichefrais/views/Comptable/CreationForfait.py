@@ -4,7 +4,10 @@ from fichefrais.forms import FormForfait
 
 
 def creation_forfait(request):
-
+    """
+    :view creation_forfait: Utilise un formulaire pour la creation d'un Forfait
+    :template ajout_forfait.html:
+    """
     today = datetime.today()
 
     if request.method == "POST":

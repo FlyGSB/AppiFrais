@@ -3,7 +3,9 @@ from fichefrais.models import PieceJointe
 
 
 class FormPieceJointe(forms.ModelForm):
-
+    """
+    Formulaire d'ajout d'une Piece Jointe (Justificatif)
+    """
     class Meta:
         model = PieceJointe
         fields = ["piece"]

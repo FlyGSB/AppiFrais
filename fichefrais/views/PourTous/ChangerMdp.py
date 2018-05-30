@@ -3,7 +3,10 @@ from fichefrais.forms.FormChangerMdp import FormChangerMdp
 
 
 def changer_mdp(request):
-
+    """
+    :view changer_mdp: vue permetant de changer le mot de passe d'un utilisateur
+    :template changer_mdp.html:
+    """
     user = request.user
     form_mdp = FormChangerMdp(request.POST or None)
 

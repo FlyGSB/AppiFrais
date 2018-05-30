@@ -5,7 +5,12 @@ from fichefrais.utils import liste_fiche_frais
 
 
 def fiche_frais(request, year, month):
-
+    """
+    :view fiche_frais: permet d'afficher les detail d'une Fiche de Frais
+    :param year: annee de la Fiche de Frais
+    :param month: mois de la Fiche de Frais
+    :template fiche_frais_detail.html:
+    """
     qs_fiche_frais = FicheFrais.objects.filter(user=request.user, date__year=year, date__month=month)
 
     if len(qs_fiche_frais) > 0:

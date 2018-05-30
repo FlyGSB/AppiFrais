@@ -4,7 +4,10 @@ from django.shortcuts import render
 
 
 def gestion_forfait(request):
-
+    """
+    :view gestion_forfait: Permet d'afficher la vue de gestion des Forfait
+    :template gestion_forfait.html:
+    """
     today = datetime.today()
     qs_forfait = Forfait.objects.filter(date_fin=None)
 

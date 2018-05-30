@@ -4,7 +4,10 @@ from datetime import datetime
 
 
 def liste_ancien_forfait(request):
-
+    """
+    :view liste_ancien_forfait: permet d'afficher la liste des Forfait cloture
+    :template gestion_forfait.html:
+    """
     today = datetime.today()
     qs_forfait = Forfait.objects.filter(date_fin__lte=today)
 

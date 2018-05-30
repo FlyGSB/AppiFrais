@@ -6,7 +6,10 @@ from fichefrais.utils import liste_fiche_frais
 
 
 def liste_fiche_frais_comptable(request):
-
+    """
+    :view liste_fiche_frais_comptable: permet d'afficher la liste des Fiche de Frais par Visiteur
+    :template liste_fiche_frais.html:
+    """
     choix_visiteur = FormChoixVisiteur(request.POST or None)
 
     if "visiteur" in request.session:

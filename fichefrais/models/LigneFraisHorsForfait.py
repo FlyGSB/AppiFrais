@@ -2,6 +2,16 @@ from django.db import models
 
 
 class LigneFraisHorsForfait(models.Model):
+    """
+    :entity LigneFraisHorsForfait: Frais hors forfait
+    :field fiche_frais: Fiche Frais attache au Frais
+    :field etat: Etat du Frais
+    :field montant: Montant du Frais
+    :field libelle_hors_forfait: Libelle du Frais
+    :field date_frais: Date d'aquisition du Frais
+    :field date_ajout: Data de l'ajout sur l'application
+    :field date_modification: Date de dernière modification du Frais
+    """
     fiche_frais = models.ForeignKey("FicheFrais", models.CASCADE, "frais_hors_forfait")
     etat = models.ForeignKey("Etat")
     montant = models.FloatField(max_length=6)

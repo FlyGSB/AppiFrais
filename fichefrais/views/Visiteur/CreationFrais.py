@@ -5,7 +5,10 @@ from fichefrais.utils import get_date_fiche_frais
 
 
 def creation_frais(request):
-
+    """
+    :view creation_frais: Permet d'utiliser un formulaire d'ajout de Frais (Forfait, Hors Forfait)
+    :template ajout_frais.html:
+    """
     title = "Ajouter Frais"
 
     if request.method == "POST":

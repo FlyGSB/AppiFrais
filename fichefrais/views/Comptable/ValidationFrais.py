@@ -4,7 +4,13 @@ from fichefrais.utils import get_elem_fiche
 
 
 def validation_frais(request, valide=None, type_frais=None, frais_id=None):
-
+    """
+    :view validation_frais: permet de gérer l'Etat de validation d'un frais
+    :param valide: le numero du future Etat du Frais
+    :param type_frais: Frais Forfait ou Hors Forfait
+    :param frais_id: clef primaire du Frais
+    :return: redirige vers l'accueil de l'utilisateur
+    """
     if valide:
         frais = get_elem_fiche(type_frais, frais_id)
 

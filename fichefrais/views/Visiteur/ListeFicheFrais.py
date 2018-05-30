@@ -4,7 +4,10 @@ from fichefrais.utils import liste_fiche_frais
 
 
 def list_fiche_frais(request):
-
+    """
+    :view liste_fiche_frais: affiche la liste des Fiche de Frais d'un utilisateur
+    :template liste_fiche_frais.html:
+    """
     title = "Liste Fiche De Frais"
 
     qs_fiche_frais = FicheFrais.objects.filter(user=request.user).all()

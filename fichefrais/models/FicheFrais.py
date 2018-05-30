@@ -5,6 +5,15 @@ from fichefrais.utils import set_montant_valide
 
 
 class FicheFrais(models.Model):
+    """
+    :entity FicheFrais: representation d'une Fiche de Frais
+    :field user: Utilisateur lié à la Fiche de Frais
+    :field etat: Etat de la fiche de Frais
+    :field date: Date pour calculer le mois de la fiche
+    :field date_modif: Permet de garder une trace des modifications d'une fiche
+    :field nb_justificatif: Nombre de justificatif enregistre pour une fiche
+    :field montant_valide: Montant total valide par un Comptable d'une fiche
+    """
     user = models.ForeignKey(User, models.CASCADE, 'fiche_frais')
     etat = models.ForeignKey("Etat", models.SET(0))
 

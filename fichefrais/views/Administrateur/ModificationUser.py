@@ -4,7 +4,10 @@ from accounts.forms import UserRegisterForm
 
 
 def modification_user(request, user_id=None):
-
+    """
+    :view modification_user: Permet la modification des utilisateurs par formulaire
+    :template register.html:
+    """
     if not user_id:
         if "user_modif" in request.session:
             if request.session["user_modif"]:

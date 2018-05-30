@@ -7,8 +7,12 @@ class LoginRequiredMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        # Code to be executed for each request before
-        # the view (and later middleware) are called.
+        """
+        Middleware personnalise pour verifier les acces des utilisateurs
+        et rediriger vers les bonnes vue pour la securite
+        """
+
+        # Code Executer avant l'appele de la vue
 
         url = request.path_info.split("/")
         if not request.user.is_authenticated():
@@ -33,7 +37,6 @@ class LoginRequiredMiddleware:
 
         response = self.get_response(request)
 
-        # Code to be executed for each request/response after
-        # the view is called.
+        # Code Execute apres l'appele de la vue
 
         return response

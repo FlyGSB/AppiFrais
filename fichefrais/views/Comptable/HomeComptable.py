@@ -5,7 +5,10 @@ from fichefrais.utils import get_temps_relatif, ajout_mois
 
 
 def home_comptable(request):
-
+    """
+    :view home_comptable: Affiche l'accueil des utilisateurs Comptable
+    :template home_comptable.html:
+    """
     title = "Accueil"
     today = date.today()
     end = date(today.year, today.month, 20)

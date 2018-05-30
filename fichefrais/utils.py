@@ -1,17 +1,28 @@
 import datetime
 import calendar
 from dateutil.relativedelta import relativedelta
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404
 from io import BytesIO
 from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 
+"""
+Fichier remplis d'utilitaire pour l'application
+"""
 
 class Render:
-
+    """
+    Class Render pour les rendus de fichier PDF
+    """
     @staticmethod
     def render(path: str, params: dict):
+        """
+        Permet de recuper un template et de le transformer en PDF en lui injectant un Context
+        :param path: chemin du template
+        :param params: dictionnaire de parametre
+        :return: reponse Http de type application/pdf
+        """
         template = get_template(path)
         html = template.render(params)
         response = BytesIO()
@@ -23,6 +34,11 @@ class Render:
 
 
 def liste_fiche_frais(qs_fiche_frais):
+    """
+    Fonction de formatage des requetes pour un Fiche de Frais
+    :param qs_fiche_frais: requete d'une ou plusieurs Fiche de Frais
+    :return: une liste de Fiche de Frais pretes a etre utilise dans une vue
+    """
     from fichefrais.models import LigneFraisForfait, LigneFraisHorsForfait, PieceJointe
     fiches_frais = {}
     for fiche in qs_fiche_frais:
@@ -46,6 +62,12 @@ def liste_fiche_frais(qs_fiche_frais):
 
 
 def get_elem_fiche(type_elem=None, obj_id=None):
+    """
+    Permet de recuperer un element d'une Fiche de Frais rapidement
+    :param type_elem: le type de l'element (ligne_frais_forfait, ligne_frais_hors_forfait, forfait, piece_jointe)
+    :param obj_id: clef primaire de l'element
+    :return: la requete de l'element
+    """
     from fichefrais.models import LigneFraisForfait, LigneFraisHorsForfait, PieceJointe, Forfait
     elem = None
 
@@ -61,54 +83,13 @@ def get_elem_fiche(type_elem=None, obj_id=None):
     return elem
 
 
-def get_default_context(request=None, title=""):
-    context = {}
-    today = datetime.datetime.today()
-
-    if request:
-        if request.user:
-            context["user"] = request.user
-
-    if title:
-        context["title"] = title
-
-    context["today"] = today
-
-    return context
-
-
-def verification_connexion(request, utilisateur_autorise: list):
-    if request:
-        if not request.user.is_authenticated():
-            return redirect("login")
-        elif request.user.profile.job.libelle_job not in utilisateur_autorise:
-            return redirect(request.user.profile.job.home_job)
-        else:
-            return None
-    else:
-        return redirect("login")
-
-
-def decorateur_verification_connexion(utilisateur_autorise=None):
-    if not utilisateur_autorise:
-        utilisateur_autorise = []
-
-    def decorateur(view):
-        def wrapper_view(request, *args, **kwargs):
-            if request:
-                if not request.user.is_authenticated():
-                    return redirect("login")
-                elif request.user.profile.job.libelle_job not in utilisateur_autorise:
-                    return redirect(request.user.profile.job.home_job)
-                else:
-                    return view(request, *args, **kwargs)
-            else:
-                return redirect("login")
-        return wrapper_view
-    return decorateur
-
-
 def ajout_mois(sourcedate, months):
+    """
+    Permet d'ajouter un mois a une date
+    :param sourcedate: la date source
+    :param months: nombre de mois en plus ou moins
+    :return: la date transforme
+    """
     month = sourcedate.month - 1 + months
     year = sourcedate.year + month // 12
     month = month % 12 + 1
@@ -117,6 +98,10 @@ def ajout_mois(sourcedate, months):
 
 
 def get_date_fiche_frais():
+    """
+    Permet de recuperer facilement la date des Fiche de Frais a traiter
+    :return: si le jour > 10: la date +1 mois sinon la date d'aujourd'hui
+    """
     today = datetime.date.today()
 
     if today.day >= 10:
@@ -128,6 +113,10 @@ def get_date_fiche_frais():
 
 
 def get_date_fin_fiche_frais():
+    """
+    Permet de recuperer facilement la date d'echeance d'une Fiche de Frais
+    :return: date de fin des Fiche de Frais
+    """
     today = datetime.date.today()
 
     if today.day >= 10:
@@ -139,12 +128,24 @@ def get_date_fin_fiche_frais():
 
 
 def get_temps_relatif(date1, date2):
+    """
+    Recupere le temps relatif entre 2 date
+    :param date1: premiere date
+    :param date2: deuxieme date
+    :return: nombre de jour qui separe les deux date
+    """
     return relativedelta(date1, date2).days
 
 
 def user_directory_path(instance, filename):
+    """
+    Permet de generer le chemin de stockage des Piece Jointe
+    :param instance: instance d'une Fiche de Frais
+    :param filename: nom du fichier
+    :return: chemin d'acces/sauvegarde d'une PieceJointe
+    """
     from fichefrais.models import PieceJointe
-    # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
+    # les fichier seront upload dans MEDIA_ROOT/user_<id>/<filename>
     date_fiche = get_date_fiche_frais()
     justificatif = PieceJointe.objects.filter(fiche_frais=instance.fiche_frais)
     extension = filename.split(".")[-1]
@@ -154,6 +155,10 @@ def user_directory_path(instance, filename):
 
 
 def set_montant_valide(fiche_frais):
+    """
+    Permet de calculer le montant valide d'une Fiche de Frais
+    :param fiche_frais: requete de la fiche de frais a valider le montant
+    """
     from fichefrais.models import LigneFraisForfait, LigneFraisHorsForfait, FicheFrais
     if isinstance(fiche_frais, FicheFrais):
         f = LigneFraisForfait.objects.filter(fiche_frais=fiche_frais, etat__valeur=3)

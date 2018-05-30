@@ -1,13 +1,14 @@
 import datetime
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from fichefrais.models import FicheFrais, Etat
-from fichefrais.utils import (liste_fiche_frais, decorateur_verification_connexion,
-                              get_date_fiche_frais, get_date_fin_fiche_frais, get_temps_relatif)
+from fichefrais.utils import (liste_fiche_frais, get_date_fiche_frais, get_date_fin_fiche_frais, get_temps_relatif)
 
 
 def home_visiteur(request):
-
+    """
+    :view home_visiteur: Permet d'afficher l'Accueil des visiteurs
+    :template home_visiteur.html:
+    """
     title = "Accueil"
     today = datetime.date.today()
 

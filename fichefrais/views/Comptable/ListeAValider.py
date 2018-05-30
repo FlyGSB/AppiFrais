@@ -5,7 +5,10 @@ from fichefrais.utils import liste_fiche_frais, ajout_mois
 
 
 def liste_a_valider(request):
-
+    """
+    :view liste_a_valider: permet d'afficher la liste des Fiche de Frais a valider
+    :template liste_a_valider.html:
+    """
     today = date.today()
 
     if today.day > 20:

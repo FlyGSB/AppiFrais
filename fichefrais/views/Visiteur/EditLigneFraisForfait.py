@@ -2,12 +2,15 @@ from django.http import HttpResponseForbidden
 from django.shortcuts import get_object_or_404, render, redirect
 
 from fichefrais.forms import FormLigneFraisForfait
-from fichefrais.models import LigneFraisForfait, Etat, FicheFrais
-from fichefrais.utils import get_date_fiche_frais, set_montant_valide
+from fichefrais.models import LigneFraisForfait, Etat
+from fichefrais.utils import get_date_fiche_frais
 
 
 def edit_ligne_frais_forfait(request, pk):
-
+    """
+    :view edit_ligne_frais_forfait: permet d'editer un Frais Forfaitise d'une Fiche de Frais
+    :template edition_elem_fiche_frais.html:
+    """
     ligne_frais_forfait = get_object_or_404(LigneFraisForfait, pk=pk)
     date_fiche_frais = get_date_fiche_frais()
 

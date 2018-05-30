@@ -4,6 +4,10 @@ from fichefrais.models import  FicheFrais, Etat, LigneFraisForfait, LigneFraisHo
 
 
 def home_admin(request):
+    """
+    :view home_admin: Menu principale des Administrateurs
+    :template home_admin.html:
+    """
     if not request.user.is_authenticated():
         return redirect("login")
 

@@ -4,7 +4,10 @@ from django.contrib.auth.models import User
 
 
 def liste_user(request):
-
+    """
+    :view liste_user: Vue permettant de voir la liste des utilisateur par categories
+    :template liste_user.htmls:
+    """
     today = datetime.today()
     qs_user = User.objects.all()
 

@@ -17,6 +17,11 @@ from fichefrais.serializers import (AndroidLigneFraisForfaitSerializer, AndroidL
 @authentication_classes((TokenAuthentication, BasicAuthentication, SessionAuthentication))
 @permission_classes((IsAuthenticated,))
 def android_user_fiche_frais_view(request, pk):
+    """
+    Affichage de l'API pour android
+    :param pk: id d'un utilisateur
+    :return: une reponse au format JSON
+    """
     try:
         fiches_frais = FicheFrais.objects.filter(user_id=pk)
     except FicheFrais.DoesNotExist:
@@ -31,6 +36,11 @@ def android_user_fiche_frais_view(request, pk):
 @authentication_classes((TokenAuthentication, BasicAuthentication, SessionAuthentication))
 @permission_classes((IsAuthenticated,))
 def android_detail_fiche_frais_view(request, pk):
+    """
+    Affiche les details d'une fiche de frais
+    :param pk: clef primaire d'une fiche de frais
+    :return: une reponse au format JSON
+    """
     try:
         fiche_frais = FicheFrais.objects.get(pk=pk)
     except FicheFrais.DoesNotExist:

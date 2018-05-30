@@ -5,7 +5,10 @@ from fichefrais.utils import get_date_fiche_frais
 
 
 def ajout_piece_jointe(request):
-
+    """
+    :view ajout_piece_joint: Permet d'utiliser le formulaire d'ajout de Justificatif pour une Fiche de Frais
+    :template ajout_justificatif.html:
+    """
     title = "Ajout Justificatif"
 
     if request.method == "POST":

@@ -4,7 +4,10 @@ from datetime import datetime
 
 
 def gestion_utilisateur(request):
-
+    """
+    :view gestion_utilisateur: Vue de gestion de supression + modification des utilisateur
+    :template gestion_utilisateur.html:
+    """
     today = datetime.today()
 
     qs_visiteur = User.objects.filter(profile__job__libelle_job__icontains="visiteur")

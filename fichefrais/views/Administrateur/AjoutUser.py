@@ -3,6 +3,10 @@ from accounts.forms import UserRegisterForm, ProfileRegisterForm
 
 
 def ajout_user(request):
+    """
+    :view ajout_user: Vue d'ajout d'utilisateur
+    :template ajout_user.html:
+    """
     title = "Ajout Utilisateur"
     form_user = UserRegisterForm(request.POST or None)
     form_profile = ProfileRegisterForm(request.POST or None)

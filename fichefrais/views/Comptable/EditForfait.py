@@ -5,7 +5,11 @@ from fichefrais.models import Forfait
 
 
 def edit_forfait(request, pk):
-
+    """
+    :view edit_forfait: Permet d'editer un Forfait grace a un formulaire
+    :param pk: clef primaire d'un Forfait
+    :template edition_elem_fiche_frais.html:
+    """
     forfait = get_object_or_404(Forfait, pk=pk)
     edit_form = FormForfait(request.POST or None, instance=forfait)
 

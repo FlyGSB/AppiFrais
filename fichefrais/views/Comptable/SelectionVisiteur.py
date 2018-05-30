@@ -7,7 +7,10 @@ from fichefrais.utils import liste_fiche_frais, ajout_mois
 
 
 def selection_visiteur(request):
-
+    """
+    :view selection_visiteur: permet d'afficher les détails de la Fiche de Frais du mois en cour d'un Visiteur
+    :template validation_frais.html:
+    """
     title = "Selection Visiteur"
     today = datetime.today()
     choix_visiteur = FormChoixVisiteur(request.POST or None)

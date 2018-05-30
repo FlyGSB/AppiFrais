@@ -7,7 +7,10 @@ from fichefrais.utils import get_date_fiche_frais
 
 
 def edit_ligne_frais_hors_forfait(request, pk):
-
+    """
+    :view edit_ligne_frais_hors_forfait: permet d'editer Frais Hors Forfait d'une Fiche de Frais
+    :template edition_elem_fiche_frais.html:
+    """
     ligne_frais_hors_forfait = get_object_or_404(LigneFraisHorsForfait, pk=pk)
     date_fiche_frais = get_date_fiche_frais()
 

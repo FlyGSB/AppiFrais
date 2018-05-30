@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 
 
 class Job(models.Model):
+    """
+    Entite Job
+    """
     libelle_job = models.CharField(max_length=15, null=False)
     valeur_job = models.IntegerField(name=False)
     home_job = models.CharField(max_length=50, null=False)
@@ -12,6 +15,9 @@ class Job(models.Model):
 
 
 class Profile(models.Model):
+    """
+    Entite Profile
+    """
     user = models.OneToOneField(User, models.CASCADE)
     adresse = models.CharField(max_length=40, blank=True)
     ville = models.CharField(max_length=40, blank=True)
