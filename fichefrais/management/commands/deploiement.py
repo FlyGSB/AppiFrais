@@ -477,11 +477,11 @@ class Command(BaseCommand):
                                                      libelle_hors_forfait=i[2], date_frais=date(i[3], i[4], i[5]),
                                                      date_ajout=date(i[6], i[7], i[8]),
                                                      date_modification=date(i[9], i[10], i[11]))
-                for j in e[11]:
-                    LigneFraisForfait.objects.create(fiche_frais=test,
-                                                     forfait=Forfait.objects.get(libelle_forfait=j[0], date_fin=None),
-                                                     etat=Etat.objects.get(valeur=j[1]), quantite=j[2],
-                                                     date_frais=date(j[3], j[4], j[5]),
-                                                     date_ajout=date(j[6], j[7], j[8]),
-                                                     date_modification=date(j[9], j[10], j[11]))
+            for j in e[11]:
+                LigneFraisForfait.objects.create(fiche_frais=test,
+                                                 forfait=Forfait.objects.get(libelle_forfait=j[0], date_fin=None),
+                                                 etat=Etat.objects.get(valeur=j[1]), quantite=j[2],
+                                                 date_frais=date(j[3], j[4], j[5]),
+                                                 date_ajout=date(j[6], j[7], j[8]),
+                                                 date_modification=date(j[9], j[10], j[11]))
         print("fiches ok")

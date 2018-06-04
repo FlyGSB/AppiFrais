@@ -42,6 +42,7 @@ urlpatterns = [
     # API
     url(r'^api-rest/detail_fiche_frais/(?P<pk>[0-9]+)/$', android_detail_fiche_frais_view),
     url(r'^api-rest/user_fiche_frais/(?P<pk>[0-9]+)/$', android_user_fiche_frais_view),
-    url(r'^api-token-auth/', auth_views.obtain_auth_token),
+    # url(r'^api-token-auth/', auth_views.obtain_auth_token),
+    url(r'^api-token-auth/', CustomAuthToken.as_view()),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

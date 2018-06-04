@@ -35,10 +35,11 @@ class AndroidLigneFraisForfaitSerializer(serializers.ModelSerializer):
     type_f = serializers.CharField(default="frais_forfait", max_length=100)
     libelle = serializers.CharField(source="forfait.libelle_forfait")
     etat = serializers.IntegerField(source="etat.valeur")
+    montant = serializers.CharField(source="total")
 
     class Meta:
         model = LigneFraisForfait
-        fields = ('type_f', 'libelle', 'total', 'date_frais', 'etat')
+        fields = ('type_f', 'libelle', 'montant', 'date_frais', 'etat')
 
 
 class AndroidLigneFraisHorsForfaitSerializer(serializers.ModelSerializer):

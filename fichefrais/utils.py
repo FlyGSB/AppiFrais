@@ -45,8 +45,8 @@ def liste_fiche_frais(qs_fiche_frais):
         frais_forfait = LigneFraisForfait.objects.filter(fiche_frais=fiche)
         frais_hors_forfait = LigneFraisHorsForfait.objects.filter(fiche_frais=fiche)
         justificatif = PieceJointe.objects.filter(fiche_frais=fiche)
-        sous_total_frais_forfait = sum([ligne.total for ligne in frais_forfait])
-        sous_total_frais_hors_forfait = sum([ligne.montant for ligne in frais_hors_forfait])
+        sous_total_frais_forfait = round(sum([ligne.total for ligne in frais_forfait]), 2)
+        sous_total_frais_hors_forfait = round(sum([ligne.montant for ligne in frais_hors_forfait]), 2)
         etat_fiche_frais = fiche.etat
         fiches_frais[fiche] = {
             "user": fiche.user,

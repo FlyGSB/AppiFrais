@@ -22,7 +22,7 @@ class LigneFraisForfait(models.Model):
 
     @property
     def total(self):
-        return self.forfait.montant * self.quantite
+        return round(self.forfait.montant * self.quantite, 2)
 
     def __str__(self):
         return "%s (%s)" % (self.forfait, self.quantite)
