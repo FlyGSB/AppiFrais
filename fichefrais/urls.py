@@ -39,6 +39,7 @@ urlpatterns = [
     url(r'^administration/gestion_user/$', gestion_utilisateur, name="gestion_utilisateur"),
     url(r'^administration/del_utilisateur/(?P<user_id>[0-9]+)/$', supression_user, name="suppression_user"),
     url(r'^administration/modif_user/(?P<user_id>[0-9]+)/$', modification_user, name="modification_user"),
+    url(r'^administration/creation_user/$', ajout_user, name="creation_user"),
     # API
     url(r'^api-rest/detail_fiche_frais/(?P<pk>[0-9]+)/$', android_detail_fiche_frais_view),
     url(r'^api-rest/user_fiche_frais/(?P<pk>[0-9]+)/$', android_user_fiche_frais_view),

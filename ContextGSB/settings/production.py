@@ -141,4 +141,4 @@ MEDIAFILES_DIRS = [
     '/var/www/media/'
 ]
 
-APPEND_SLASH = FALSE
+APPEND_SLASH = False
