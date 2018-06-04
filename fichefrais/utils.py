@@ -45,9 +45,10 @@ def liste_fiche_frais(qs_fiche_frais):
         frais_forfait = LigneFraisForfait.objects.filter(fiche_frais=fiche)
         frais_hors_forfait = LigneFraisHorsForfait.objects.filter(fiche_frais=fiche)
         justificatif = PieceJointe.objects.filter(fiche_frais=fiche)
-        sous_total_frais_forfait = round(sum([ligne.total for ligne in frais_forfait]), 2)
-        sous_total_frais_hors_forfait = round(sum([ligne.montant for ligne in frais_hors_forfait]), 2)
+        sous_total_frais_forfait = round(sum([ligne.total for ligne in frais_forfait if ligne.etat.valeur != 4]), 2)
+        sous_total_frais_hors_forfait = round(sum([ligne.montant for ligne in frais_hors_forfait if ligne.etat.valeur != 4]), 2)
         etat_fiche_frais = fiche.etat
+        fiche.set_montant_valide()
         fiches_frais[fiche] = {
             "user": fiche.user,
             "etat": etat_fiche_frais,
@@ -161,8 +162,8 @@ def set_montant_valide(fiche_frais):
     """
     from fichefrais.models import LigneFraisForfait, LigneFraisHorsForfait, FicheFrais
     if isinstance(fiche_frais, FicheFrais):
-        f = LigneFraisForfait.objects.filter(fiche_frais=fiche_frais, etat__valeur=3)
-        hf = LigneFraisHorsForfait.objects.filter(fiche_frais=fiche_frais, etat__valeur=3)
+        f = LigneFraisForfait.objects.filter(fiche_frais=fiche_frais, etat__valeur__in=[3, 6])
+        hf = LigneFraisHorsForfait.objects.filter(fiche_frais=fiche_frais, etat__valeur__in=[3, 6])
         total = round(sum([t.total for t in f]) + sum([t.total for t in hf]), 2)
         fiche_frais.montant_valide = total
         fiche_frais.save()

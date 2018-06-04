@@ -26,9 +26,10 @@ class AndroidFicheFraisSerializer(serializers.ModelSerializer):
 
 
 class AndroidForfaitSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = Forfait
-        fields = ('libelle_forfait', )
+        fields = ('libelle_forfait', 'montant',)
 
 
 class AndroidLigneFraisForfaitSerializer(serializers.ModelSerializer):
@@ -36,20 +37,22 @@ class AndroidLigneFraisForfaitSerializer(serializers.ModelSerializer):
     libelle = serializers.CharField(source="forfait.libelle_forfait")
     etat = serializers.IntegerField(source="etat.valeur")
     montant = serializers.CharField(source="total")
+    date = serializers.CharField(source="date_frais")
 
     class Meta:
         model = LigneFraisForfait
-        fields = ('type_f', 'libelle', 'montant', 'date_frais', 'etat')
+        fields = ('type_f', 'libelle', 'montant', 'date', 'etat')
 
 
 class AndroidLigneFraisHorsForfaitSerializer(serializers.ModelSerializer):
     type_f = serializers.CharField(default="frais_hors_forfait", max_length=100)
     libelle = serializers.CharField(source="libelle_hors_forfait")
     etat = serializers.IntegerField(source="etat.valeur")
+    date = serializers.CharField(source="date_frais")
 
     class Meta:
         model = LigneFraisHorsForfait
-        fields = ('type_f', 'libelle', 'montant', 'date_frais', 'etat')
+        fields = ('type_f', 'libelle', 'montant', 'date', 'etat')
 
 
 class AndroidUserFicheFraisSerializer(serializers.ModelSerializer):
